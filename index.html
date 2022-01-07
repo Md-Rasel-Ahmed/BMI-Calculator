@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>BMI Calculator</title>
+</head>
+<body>
+<div class="container">
+
+    <input type="text" id="height" placeholder="আপনার উচ্চতা লিখুন">
+    <input type="text" id="weight" placeholder="আপনার ওজন লিখুন">
+    <input type="submit" id="btn" value="Submit">
+<h4>Your BMI: <span class="resut"></span></h4>
+</div>
+    
+    
+<script>
+   
+    
+    let result=document.querySelector('.resut');
+    let btn=document.querySelector('#btn');
+  btn.addEventListener('click',function(){
+       let weight = document.getElementById('weight');
+       let height = document.getElementById('height')
+      let heightNum = parseInt(height.value)
+      let weightNum = parseInt(weight.value)
+      heightNum=heightNum*12;
+      heightNum=heightNum*0.025
+    //   checking validation
+    if(isNaN(heightNum) || heightNum===''){
+        return alert('আপনার নাম্বার ভ্যালিড হয়নাই আবার চেষ্টা করেন ,ধন্যবাদ ')
+    }
+    if (isNaN(weightNum) || weightNum === '') {
+          return alert('আপনার নাম্বার ভ্যালিড হয়নাই আবার চেষ্টা করেন ,ধন্যবাদ ')
+      }
+     let re = (weightNum / (heightNum * heightNum))
+       console.log(re);
+      if (re <= 18.5) {
+          result.textContent= "আপনার ওজন যতটুক দরকার ততটুক হয়নাই এখনো ,একটু ভালো মতো খাইয়া ওজন ঠিক কইরেন ";
+      } else if (re <= 25.0) {
+            result.textContent ="আপনি একদম পারফেক্ট আছেন ,এইভাবে থাকার চেষ্টা করবেন ";
+      } else if (re <= 30.0) {
+          result.textContent ="আপনার ওজন যতটুক দরকার তার থেকেও ও বেশি হয়ে গেছে ,আপনার একটু ডায়েট করা দরকার ";
+      } else {
+           result.textContent =`এত মোটা শরীর নিয়ে কিভাবে ঘুমান ,আপনার তো (বউ/স্বামী)  চলে যাবে `;
+      }
+
+  })
+
+
+</script>
+</body>
+</html>
